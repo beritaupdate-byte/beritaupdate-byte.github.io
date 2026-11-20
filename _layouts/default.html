@@ -1,222 +1,131 @@
 
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1">
+/* BERANDA PORTAL BERITA */
 
-  <title>
-    {% if page.title %}
-      {{ page.title | escape }} |
-    {% endif %}
-    {{ site.title | escape }}
-  </title>
+.welcome {
+  text-align: center;
+  padding: 45px 20px;
+  background: white;
+  border-radius: 14px;
+  margin-bottom: 35px;
+}
 
-  <meta name="description"
-        content="{{ page.description | default: site.description | escape }}">
+.welcome h1 {
+  font-size: 32px;
+  color: #17365d;
+  line-height: 1.3;
+}
 
-  <link rel="canonical"
-        href="{{ page.url | absolute_url }}">
- 
-  <!-- GOOGLE SEO & DISCOVER -->
-  <meta name="robots"
-        content="index, follow, max-image-preview:large">
+.welcome p {
+  max-width: 700px;
+  margin: auto;
+  color: #64748b;
+}
 
-  <!-- OPEN GRAPH -->
-  <meta property="og:locale" content="id_ID">
+.news-section {
+  margin-bottom: 45px;
+}
 
-  <meta property="og:site_name"
-        content="{{ site.title | escape }}">
+.section-title {
+  font-size: 25px;
+  color: #17365d;
+  border-left: 5px solid #e63946;
+  padding-left: 14px;
+  margin-bottom: 22px;
+}
 
-  <meta property="og:type"
-        content="{% if page.date %}article{% else %}website{% endif %}">
+.featured-news {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px #00000012;
+}
 
-  <meta property="og:title"
-        content="{{ page.title | default: site.title | escape }}">
+.featured-news img {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  object-fit: cover;
+}
 
-  <meta property="og:description"
-        content="{{ page.description | default: site.description | escape }}">
+.featured-content {
+  padding: 28px;
+}
 
-  <meta property="og:url"
-        content="{{ page.url | absolute_url }}">
+.featured-content h3 {
+  font-size: 25px;
+  line-height: 1.4;
+}
 
-  {% if page.image %}
-  <meta property="og:image"
-        content="{{ page.image | absolute_url }}">
-  {% endif %}
+.featured-content a,
+.card a {
+  color: #17365d;
+  text-decoration: none;
+}
 
-  <!-- ARTICLE STRUCTURED DATA -->
-  {% if page.date %}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": {{ page.title | jsonify }},
-    "description": {{ page.description | default: site.description | jsonify }},
-    "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
-    {% if page.last_modified_at %}
-    "dateModified": {{ page.last_modified_at | date_to_xmlschema | jsonify }},
-    {% endif %}
-    {% if page.image %}
-    "image": {{ page.image | absolute_url | jsonify }},
-    {% endif %}
-    "author": {
-      "@type": "Organization",
-      "name": {{ page.author | default: site.title | jsonify }}
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": {{ site.title | jsonify }}
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": {{ page.url | absolute_url | jsonify }}
-    }
+.featured-content a:hover,
+.card a:hover {
+  color: #e63946;
+}
+
+.card h3 {
+  font-size: 19px;
+  line-height: 1.45;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+.archive-list {
+  background: white;
+  border-radius: 12px;
+  padding: 15px 22px;
+}
+
+.archive-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.archive-item:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .welcome {
+    padding: 30px 18px;
   }
-  </script>
-  {% endif %}
 
-  
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+  .welcome h1 {
+    font-size: 26px;
+  }
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f7fb;
-      color: #202938;
-      line-height: 1.7;
-    }
+  .featured-news {
+    grid-template-columns: 1fr;
+  }
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 0 20px;
-    }
+  .featured-news img {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
 
-    .site-header {
-      background: #17365d;
-      padding: 15px 0;
-    }
+  .featured-content {
+    padding: 20px;
+  }
 
-    .site-header .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
+  .featured-content h3 {
+    font-size: 21px;
+  }
 
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      text-decoration: none;
-      color: white;
-    }
-
-    .site-logo {
-      width: 180px;
-      max-width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 6px;
-    }
-
-    nav a {
-      color: white;
-      margin-right: 15px;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    main {
-      padding-top: 35px;
-      padding-bottom: 50px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .card, .post {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 3px 15px #00000012;
-    }
-
-    .card img {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-    }
-
-    .card-body {
-      padding: 20px;
-    }
-
-    .card h2 {
-      font-size: 19px;
-      line-height: 1.4;
-      margin: 0 0 12px;
-    }
-
-    .card a {
-      color: #17365d;
-      text-decoration: none;
-    }
-
-    .post {
-      padding: 30px;
-    }
-
-    .post-image {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-
-    .meta {
-      color: #64748b;
-      font-size: 14px;
-    }
-
-    footer {
-      background: #17365d;
-      color: white;
-      text-align: center;
-      padding: 24px;
-    }
-
-    @media (max-width: 768px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .post {
-        padding: 18px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  {% include header.html %}
-
-  <main class="container">
-    {{ content }}
-  </main>
-
-  <footer>
-    &copy; {{ 'now' | date: '%Y' }}
-    Berita Update Byte
-  </footer>
-
-</body>
-</html>
+  .section-title {
+    font-size: 22px;
+  }
+}
