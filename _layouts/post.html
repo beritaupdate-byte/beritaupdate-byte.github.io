@@ -1,36 +1,36 @@
 
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1">
+---
+layout: default
+---
 
-  <title>{{ page.title | escape }}</title>
+<article class="post">
 
-  <meta name="description"
-        content="{{ page.description | escape }}">
+  <h1>{{ page.title | escape }}</h1>
 
-  <link rel="canonical"
-        href="{{ page.url | absolute_url }}">
-</head>
-<body>
-  <main>
-    <article>
-      <h1>{{ page.title }}</h1>
+  <p class="meta">
+    Oleh {{ page.author | default: site.title }} |
+    {{ page.date | date: "%d %B %Y" }} |
+    {{ page.categories | join: ", " }}
+  </p>
 
-      <p>
-        {{ page.author }} |
-        {{ page.date | date: "%d-%m-%Y" }}
-      </p>
+  {% if page.image %}
+  <img
+    class="post-image"
+    src="{{ page.image | relative_url }}"
+    alt="{{ page.title | escape }}"
+    loading="lazy">
+  {% endif %}
 
-      {% if page.image %}
-      <img src="{{ page.image | relative_url }}"
-           alt="{{ page.title | escape }}">
-      {% endif %}
+  <div class="post-content">
+    {{ content }}
+  </div>
 
-      {{ content }}
-    </article>
-  </main>
-</body>
-</html>
+  {% unless page.hide_buttons %}
+  <div class="post-actions">
+    <button onclick="window.print()">
+      Cetak Artikel
+    </button>
+  </div>
+  {% endunless %}
+
+</article>
