@@ -5,20 +5,39 @@ layout: default
 
 <article class="post">
 
-  <h1>{{ page.title | escape }}</h1>
+  <header class="article-header">
+    <h1>{{ page.title | escape }}</h1>
 
-  <p class="meta">
-    Oleh {{ page.author | default: site.title }} |
-    {{ page.date | date: "%d %B %Y" }} |
-    {{ page.categories | join: ", " }}
-  </p>
+    {% if page.description %}
+    <p class="article-description">
+      {{ page.description | escape }}
+    </p>
+    {% endif %}
+
+    <p class="meta">
+      Oleh <strong>{{ page.author | default: site.title }}</strong>
+      |
+      <time datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%d-%m-%Y" }}
+      </time>
+      |
+      {{ page.categories | join: ", " }}
+    </p>
+  </header>
 
   {% if page.image %}
-  <img
-    class="post-image"
-    src="{{ page.image | relative_url }}"
-    alt="{{ page.title | escape }}"
-    loading="lazy">
+  <figure class="article-figure">
+    <img
+      class="post-image"
+      src="{{ page.image | relative_url }}"
+      alt="{{ page.image_alt | default: page.title | escape }}"
+      width="1280"
+      height="720"
+      fetchpriority="high">
+    {% if page.image_caption %}
+    <figcaption>{{ page.image_caption }}</figcaption>
+    {% endif %}
+  </figure>
   {% endif %}
 
   <div class="post-content">
