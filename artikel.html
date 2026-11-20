@@ -1,0 +1,30 @@
+
+---
+layout: default
+title: "Daftar Artikel"
+---
+
+<h1>Semua Artikel</h1>
+
+<div class="grid">
+{% for post in site.posts %}
+  <article class="card">
+    <a href="{{ post.url | relative_url }}">
+      {% if post.image %}
+      <img src="{{ post.image | relative_url }}"
+           alt="{{ post.title | escape }}">
+      {% endif %}
+    </a>
+
+    <div class="card-body">
+      <h2>
+        <a href="{{ post.url | relative_url }}">
+          {{ post.title }}
+        </a>
+      </h2>
+
+      <p>{{ post.description }}</p>
+    </div>
+  </article>
+{% endfor %}
+</div>
