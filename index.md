@@ -6,16 +6,16 @@ title: "Beranda"
 
 # Berita Terbaru
 
-Temukan informasi terbaru seputar teknologi,
-budaya, dan hiburan digital.
+Temukan informasi terbaru seputar teknologi, budaya, dan hiburan digital.
 
 <div class="grid">
 {% for post in site.posts %}
   <article class="card">
     <a href="{{ post.url | relative_url }}">
       {% if post.image %}
-      <img src="{{ post.image | relative_url }}"
-           alt="{{ post.title | escape }}">
+      <img
+        src="{{ post.image | relative_url }}"
+        alt="{{ post.title | escape }}">
       {% endif %}
     </a>
 
