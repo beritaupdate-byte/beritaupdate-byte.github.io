@@ -1,0 +1,12 @@
+title: Berita Update Byte
+description: Portal informasi teknologi dan hiburan digital
+url: "https://beritaupdate-byte.github.io"
+baseurl: ""
+timezone: Asia/Jakarta
+
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
