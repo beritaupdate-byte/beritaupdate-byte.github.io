@@ -1,12 +1,22 @@
-title: Berita Update Byte
-description: Portal informasi teknologi dan hiburan digital
+
+title: "Berita Update Byte"
+description: "Portal berita, teknologi, budaya digital, dan informasi terkini."
 url: "https://beritaupdate-byte.github.io"
 baseurl: ""
+lang: "id"
 timezone: Asia/Jakarta
 
 markdown: kramdown
 permalink: /:year/:month/:day/:title/
 
 plugins:
-  - jekyll-feed
   - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
