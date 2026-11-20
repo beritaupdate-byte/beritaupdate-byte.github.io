@@ -1,12 +1,21 @@
 
 <header class="site-header">
   <div class="container">
-    <a class="brand" href="{{ '/' | relative_url }}">
-      Berita Update Byte
+
+    <a href="{{ '/' | relative_url }}"
+       class="brand">
+
+      <img
+        src="{{ '/assets/images/logo-berita-update-byte.jpg' | relative_url }}"
+        alt="Berita Update Byte"
+        class="site-logo">
+
     </a>
+
     <nav>
       <a href="{{ '/' | relative_url }}">Beranda</a>
       <a href="{{ '/artikel.html' | relative_url }}">Artikel</a>
     </nav>
+
   </div>
 </header>
